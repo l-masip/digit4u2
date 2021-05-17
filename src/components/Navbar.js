@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { withAuth } from "../context/auth.context";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
+      isLoggedIn: false,
     };
   }
   
@@ -17,7 +18,7 @@ class Navbar extends Component {
           </a>
         </div>
 
-        {this.state.loggedIn ? (
+        {this.state.isLoggedIn ? (
           <React.Fragment>
             <div className="navbar-links">
               <a href="/signup" className="links-nav">
@@ -45,4 +46,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withAuth(Navbar);

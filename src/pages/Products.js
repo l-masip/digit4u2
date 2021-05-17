@@ -10,9 +10,9 @@ class Products extends Component {
     }
 
   }
-  componentDidMount(){
-    getProducts
-  }
+  // componentDidMount(){
+  //   getProducts();
+  // }
 
   render(){
     return(
@@ -22,7 +22,7 @@ class Products extends Component {
           <p>loren ipsum</p>
         </div>
         <div className="product2">
-          {this.state.products.map(product => return <Product />)}
+          {this.state.products.map(product => <Product />)}
         </div>
       </div>
     )

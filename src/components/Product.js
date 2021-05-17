@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Expert from "./Expert";
 
 
-class Product extends from Component{
+class Product extends Component{
   constructor(props){
     super(props);
     this.state= {}

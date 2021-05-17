@@ -4,13 +4,14 @@ import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 import Products from './pages/Products';
 import Footer from './components/Footer';
+// import { withAuth } from "./context/auth.context";
 
 
 function App() {
 
   return (
     <div>
-      <Navbar {...{ loggedIn }} />
+      <Navbar />
       <Switch>
         <Route exct path="/" component={Homepage} />
         <Route exct path="/products" component={Products} />
