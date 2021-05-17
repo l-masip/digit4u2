@@ -1,36 +1,49 @@
-import React, {Component} from 'react';
-import Expert from "./Expert";
+import React, { Component } from 'react';
+import ProductService from '../services/product.service';
 
-
-class Product extends Component{
-  constructor(props){
+class Product extends Component {
+  constructor(props) {
     super(props);
-    this.state= {}
+    this.state = {
+      product: {},
+    };
+    this.productService = new ProductService();
   }
 
-  render(){
-    return(
+  getProducts() {
+    this.productService
+      .then((response) => {
+        this.setState({ product: response.data });
+      })
+      .catch((err) => console.error(err));
+  }
+  componentDidMount() {
+    this.getProducts();
+  }
 
-          <div className="products">
+  render() {
+    const { name, description, video_demo, price, category, expert } =
+      this.state.product;
+    return (
+      <div className="products">
+        <div>
+          <h2>{name}</h2>
+        </div>
+        <div>
+          <video src={video_demo}>test</video>
+        </div>
+        <div>
+          <div>{expert}</div>
           <div>
-            <h2>Titulo</h2>
+            <p>{category}</p>
+            <p>{description}</p>
+            <p>{price}</p>
+            <button>buy</button>
           </div>
-          <div>
-            <video src="">test</video>
-          </div>
-          <div>
-            <div>expert</div>
-            <div>
-            <p>description</p>
-             <button>buy</button>
-             </div>
-          </div>
-          </div>
-
-    )
+        </div>
+      </div>
+    );
   }
 }
 
-
 export default Product;
-

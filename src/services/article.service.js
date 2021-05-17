@@ -10,6 +10,6 @@ export default class ArticleService{
 
   getArticles = (data) => this.instance.get('/', data);
   postArticles = (data) => this.instance.post('/', data);
-  editArticles = (data) => this.instance.put('/:id', data);
+  editArticle = (data) => this.instance.put('/:id', data);
   deleteArticle = () => this.instance.delete('/:id');
 }

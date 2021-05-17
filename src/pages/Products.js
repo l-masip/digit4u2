@@ -1,33 +1,47 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Product from '../components/Product';
-
+import { withAuth } from '../context/auth.context';
+import ProductService from '../services/product.service';
 
 class Products extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state= {
-      products:[]
-    }
-
+    this.state = {
+      products: [],
+    };
+    this.productService = new ProductService();
   }
-  // componentDidMount(){
-  //   getProducts();
-  // }
 
-  render(){
-    return(
-      <div>
-        <div className="product1">
-          <h1>Digit4u</h1>
-          <p>loren ipsum</p>
-        </div>
-        <div className="product2">
-          {this.state.products.map(product => <Product />)}
-        </div>
-      </div>
-    )
+  refreshState() {
+    this.productService
+      .getProducts()
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ products: response.data });
+      })
+      .catch((err) => console.error(err));
+  }
+
+  componentDidMount() {
+    this.refreshState();
+  }
+
+  displayProducts() {
+    const { products } = this.state;
+    return products.map((product) => {
+      return (
+        <Product
+          refreshState={() => this.refreshState()}
+          key={product.id}
+          {...product}
+        />
+      );
+    });
+  }
+
+  render() {
+    return <div>{this.displayProducts()}</div>;
   }
 }
 
-
-export default Products;
+export default withAuth(Products);
