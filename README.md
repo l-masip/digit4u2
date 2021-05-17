@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# Digit4U
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is an Web App that offers services of digitalisation to companies who want to improve their virtual awareness and update their tecnologies.
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+- **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault.
+- **Signup:** As an anon I can sign up so that I can buy products.
+- **Login:** As a user I can login so I can buy products and check the products I've already bought.
+- **Logout:** As a user I can logout from the platform so no one else can use it.
+- **Edit profile:** As a user I can edit my own profile.
+- **Buy item:** As a user I can buy products so they are available for me all the time.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Backlog
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Product CRUD
 
-### `npm test`
+# Client / Frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## React Router Routes
 
-### `npm run build`
+| **Path**       | **Component** | **Permissions**            | **Behavior**                                                  |
+| -------------- | ------------- | -------------------------- | ------------------------------------------------------------- |
+| `/`            | SplashPage    | public `<Route>`           | Home page                                                     |
+| `/signup`      | Sign Up Page  | anon only `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
+| `/login`       | Login Page    | anon only `<AnonRoute>`    | Login form, link to signup, navigate to homepage after login  |
+| `/products`    | Shop Page     | public `<Route>`           | Shows all products in a list                                  |
+| `/payment`     | Payment Page  | user only `<PrivateRoute>` | Payment Form, navigate to userpage after buying               |
+| `/blog`        | Blog          | public `<Route>`           | Show all blog articles                                        |
+| `/contact`     | Contact Page  | public `<Route>`           | Contact Form                                                  |
+| `/user/:id`    | User Page     | user only `<PrivateRoute>` | View user and bought products                                 |
+| `/product/:id` | Product Page  | user only `<PrivateRoute>` | View the bought course details                                |
+| `/blog/add`    | Add Blog Page | admin only `<AdminRoute>`  | Form create new blog entry                                    |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Navbar
+- Footer
+- Userpage
+- Product page
+- Product Box
+- Blog entry
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Services
 
-### `npm run eject`
+#### Auth Service
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- auth.login(user)
+- auth.signup(user)
+- auth.logout()
+- auth.me()
+- auth.getUser() // synchronous
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Product Service
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- product.list()
+- product.detail()
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### User Service
 
-## Learn More
+- user.create(id)
+- user.update(id)
+- user.delete(id)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Article Service
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- article.create(id)
+- article.update(id)
+- article.delete(id)
 
-### Code Splitting
+# Server/Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Models
 
-### Analyzing the Bundle Size
+### User model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+{
+  email: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
+  name: {type: String, required: true},
+  surname: {type: String, required: true},
+  Phone: {type: Number, required: true},
+  position: {type: String},
+  products: {type:Schema.Typers.ObjectId, ref:'Product'},
+  role: {type: String, enum:['admin', 'user']}
+}
+```
 
-### Making a Progressive Web App
+### Product model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```javascript
+{
+  name: {type: String, required: true, unique: true},
+  description: {type: String, required: true},
+  price: {type: Number, required: true}
+  category: {type: String, enum:['Web Design', 'Digital Marketing', 'Staff Training', 'Consulting']}
+  video_demo: {type: string, required: true}
+  expert: [type:objectId, ref:'expert']}
+}
+```
 
-### Advanced Configuration
+### Article model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```javascript
+{
+  name: {type: String, required: true, unique: true},
+  description: {type: String, required: true},
+  link: {type: string, required: true}
+}
+```
 
-### Deployment
+### Expert model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```javascript
+{
+  Name: {type: String, required: true},
+  Surname: {type: String, required: true},
+  description: {type: String, required: true},
+  img: {type:string, required: true}
+}
+```
 
-### `npm run build` fails to minify
+## API Endpoints (backend routes)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| **HTTP Method** | **URL** | **Request Body** | **Success status** | **Error Status** | **Description** |
+| --- | --- | --- | --- | --- | --- |
+| GET | `/auth/profile` | Saved session | 200 | 404 | Check if user is logged in and return profile page |
+| POST | `/auth/signup` | {name, surname, email, password} | 201 | 404 | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST | `/auth/login`  | {email, password} | 200 | 401 | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session              |
+| POST | `/auth/logout` | (empty) | 204 | 400 | Logs out the user |
+| GET | `/api/products` |    |     | 400 | Show all products |
+| GET | `/api/products/:id` | {id} |     |    | Show specific product |
+| GET | `/api/articles` |     |    | 400 | show articles |
+| POST | `/api/articles` | {name, description, img, link} | 200 | 404 | add article |
+| PUT | `/api/articles/:id` | {name,img} | 201 | 400 | edit article |
+| DELETE | `/api/articles/:id` | {id} | 200 | 400 | delete article |
+| GET | `/api/experts` | {} | 201 | 400 | show expert |
+
+## Links
+
+### Trello/Kanban
+
+[Trello](https://trello.com/b/LA1OwpCf/ironhack-project-3)
+or picture of your physical board
+
+### Git
+
+[Client repository Link](https://github.com/l-masip/digit4u)
