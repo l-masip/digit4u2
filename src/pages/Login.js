@@ -44,6 +44,7 @@ const validators = {
       event.preventDefault();
       console.log(this.state.fields);
       this.props.login(this.state.fields);
+      this.props.history.push('/');
     }
   
     handleChange(event){
