@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp';
 import Login from "./pages/Login";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UserHomepage from './pages/UserHomepage';
+import EditArticle from "./pages/EditArticle";
 import { withAuth } from "./context/auth.context";
 
 
@@ -24,8 +25,8 @@ function App() {
         <Route exact path="/articles" component={Blog} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/editArticle/:id" component={EditArticle} />
         <PrivateRoute path="/userhomepage" exact component={UserHomepage} />
-
       </Switch>
       <Footer />
     </div>

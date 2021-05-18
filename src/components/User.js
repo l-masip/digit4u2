@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserService from '../services/user.service';
+import {withAuth} from "../context/auth.context";
 
 class User extends Component {
   constructor(props) {
@@ -11,23 +12,23 @@ class User extends Component {
   }
 
   render() {
-
+    const {user}= this.props;
 
     return (
       <div className="user">
         <div>
           <h2>
-            {this.props.name} {this.props.surname}
+            {user.name} {user.surname}
           </h2>
-          <p>{this.props.position}</p>
-          <p>{this.props.phone}</p>
+          <p>{user.position}</p>
+          <p>{user.phone}</p>
         </div>
         <div>
-              <p>{this.props.products}</p>
+          <p>{user.products}</p>
         </div>
       </div>
     );
   }
 }
 
-export default User;
+export default withAuth(User);

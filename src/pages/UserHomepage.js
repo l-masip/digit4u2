@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 //import { withAuth } from '../context/auth.context';
 import User from '../components/User';
-import EditUser from '../pages/EditUser';
+import { Link } from 'react-router-dom';
 
 function UserHomepage() {
     return (
       <div>
-        <h1>
-          Welcome <User />
-        </h1>
         <p>
-        <EditUser />
+          <User />
         </p>
+        <Link to={`/editUser/${id}`}>Edit</Link>
       </div>
     );
 }

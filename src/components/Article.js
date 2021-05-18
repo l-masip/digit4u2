@@ -1,5 +1,6 @@
 import React from 'react'
 import ArticleService from '../services/article.service';
+import {Link} from "react-router-dom";
 
 
 export default function Article({ name, description, link, photo, id, refreshState }) {
@@ -14,27 +15,17 @@ export default function Article({ name, description, link, photo, id, refreshSta
       .catch(err => console.error(err))
   }
 
-  const editArticle = () => {
-    articleService.editArticle(id)
-    .then(()=> {
-      console.log('Edited');
-      refreshState();
-    })
-    .catch(err => console.error(err))
-
-  }
-
 
   return (
     <div>
       <div>
         <p>Name:{name}</p>
-        <img src={photo} alt="photo"/>
+        <img src={photo} alt="photo" />
         <p>Description:{description}</p>
-        <a href={link}>Read More</a>
+        <a target="_blank" href={link}>Read More</a>
       </div>
       <div>
-        <button onClick={() => editArticle()}>Edit</button>
+        <Link to={`/editArticle/${id}`}>Edit</Link>
         <button onClick={() => deleteArticle()}>Delete</button>
       </div>
     </div>
