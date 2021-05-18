@@ -51,6 +51,11 @@ const validators = {
     }
     return message;
   },
+
+  position: (value) => {
+    let message;
+    return message;
+  },
 };
 
 class Signup extends Component {
