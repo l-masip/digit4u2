@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import { Redirect, Route } from 'react-router';
 import { withAuth } from '../../context/auth.context';
 
 

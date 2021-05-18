@@ -18,7 +18,18 @@ class Navbar extends Component {
           </a>
         </div>
 
-        {this.state.isLoggedIn ? (
+        {this.props.isLoggedIn ? (
+          <React.Fragment>
+          <div className="navbar-links">
+            <a href="/" className="links-nav">
+              Logout
+            </a>
+            <a href="/userhomepage" className="links-nav">
+              Profile
+            </a>
+          </div>
+        </React.Fragment>
+        ) : (
           <React.Fragment>
             <div className="navbar-links">
               <a href="/signup" className="links-nav">
@@ -26,17 +37,6 @@ class Navbar extends Component {
               </a>
               <a href="/login" className="links-nav">
                 Login
-              </a>
-            </div>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <div className="navbar-links">
-              <a href="/" className="links-nav">
-                Logout
-              </a>
-              <a href="/userhomepage" className="links-nav">
-                Profile
               </a>
             </div>
           </React.Fragment>
