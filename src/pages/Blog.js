@@ -25,6 +25,7 @@ class Blog extends Component {
 
   componentDidMount() {
     this.refreshState();
+    console.log(this.props);
   }
 
   displayArticles(){

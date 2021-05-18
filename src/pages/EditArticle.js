@@ -1,35 +1,36 @@
-import React, { Component } from 'react';
-import { withAuth } from '../context/auth.context';
-import Article from '../components/Article';
+import React, { Component } from "react";
+import { withAuth } from "../context/auth.context";
+import Article from "../components/Article";
 import ArticleService from "../services/article.service";
 
 const articleService = new ArticleService();
+
 const validators = {
   name: (value) => {
     let message;
     if (!value) {
-      message = 'Name is required';
+      message = "Name is required";
     }
     return message;
   },
   description: (value) => {
     let message;
     if (!value) {
-      message = 'Description is required';
+      message = "Description is required";
     }
     return message;
   },
   link: (value) => {
     let message;
     if (!value) {
-      message = 'Link is required';
+      message = "Link is required";
     }
     return message;
   },
   photo: (value) => {
     let message;
     if (!value) {
-      message = 'Photo is required';
+      message = "Photo is required";
     }
 
     return message;
@@ -40,10 +41,10 @@ class EditArticle extends Component {
     super(props);
     this.state = {
       fields: {
-        name: '',
-        description: '',
-        link: '',
-        photo: '',
+        name: "",
+        description: "",
+        link: "",
+        photo: "",
       },
       errors: {
         name: null,
@@ -54,13 +55,23 @@ class EditArticle extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.props.match.params.id);
+    articleService
+      .getArticle(this.props.match.params.id)
+      .then((response) => {
+        this.setState({ fields: response.data });
+      })
+      .catch((err) => console.error(err));
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     articleService
       .editArticle(this.props.match.params.id, this.state.fields)
       .then(() => {
-        console.log('Edited');
-        this.props.history.push('/blog');
+        console.log("Edited");
+        this.props.history.push("/articles");
       })
       .catch((err) => console.error(err));
   }

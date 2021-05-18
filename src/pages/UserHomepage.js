@@ -9,7 +9,7 @@ function UserHomepage() {
         <p>
           <User />
         </p>
-        <Link to={`/editUser/${id}`}>Edit</Link>
+        {/* <Link to={`/editUser/${id}`}>Edit</Link> */}
       </div>
     );
 }

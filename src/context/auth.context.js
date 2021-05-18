@@ -81,6 +81,7 @@ const withAuth = (WrappedComponent) => {
               <WrappedComponent
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading}
+                isAdmin={user.role === 'admin'}
                 user={user}
                 signup={signup}
                 login={login}
