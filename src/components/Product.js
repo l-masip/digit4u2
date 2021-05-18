@@ -10,24 +10,25 @@ class Product extends Component {
     this.productService = new ProductService();
   }
 
-  getProducts() {
-    this.productService
-      .then((response) => {
-        this.setState({ product: response.data });
-      })
-      .catch((err) => console.error(err));
-  }
-  componentDidMount() {
-    this.getProducts();
-  }
+  // getProducts() {
+  //   this.productService
+  //     .then((response) => {
+  //       this.setState({ product: response.data });
+  //     })
+  //     .catch((err) => console.error(err));
+  // }
+  // componentDidMount() {
+  //   this.getProducts();
+  // }
 
   render() {
     const { name, description, video_demo, price, category, expert } =
       this.state.product;
+      console.log('PROPS', this.props);
     return (
       <div className="products">
         <div>
-          <h2>{name}</h2>
+          <h2>{this.props.name}</h2>
         </div>
         <div>
           <video src={video_demo}>test</video>

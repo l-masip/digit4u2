@@ -19,13 +19,13 @@ class Homepage extends Component {
         <div className="home2">
           <div className="home-products">
             <h2>products</h2>
-            <img> </img>
+            <img src="" alt=""/>
             <p>description</p>
             <a href="/products">haz click aqui</a>
           </div>
           <div className="home-blog">
             <h2>blog</h2>
-            <img> </img>
+            <img src="" alt=""/>
             <p>description</p>
             <a href="/products">haz click aqui</a>
           </div>
