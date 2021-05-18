@@ -27,7 +27,7 @@ class Homepage extends Component {
             <h2>blog</h2>
             <img src="" alt=""/>
             <p>description</p>
-            <a href="/products">haz click aqui</a>
+            <a href="/articles">haz click aqui</a>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import ProductService from '../services/product.service';
+import React, { Component } from "react";
+import ProductService from "../services/product.service";
 
 class Product extends Component {
   constructor(props) {
@@ -24,22 +24,29 @@ class Product extends Component {
   render() {
     const { name, description, video_demo, price, category, expert } =
       this.state.product;
-      console.log('PROPS', this.props);
+    console.log("PROPS", this.props);
     return (
       <div className="products">
         <div>
           <h2>{this.props.name}</h2>
         </div>
         <div>
-          <video src={video_demo}>test</video>
+          <video src={this.props.video_demo}>test</video>
         </div>
         <div>
-          <div>{expert}</div>
+          
           <div>
-            <p>{category}</p>
-            <p>{description}</p>
-            <p>{price}</p>
-            <button>buy</button>
+            <p>{this.props.category}</p>
+            <p>{this.props.description}</p>
+            <div>
+            <h4>
+              {this.props.expert.name} {this.props.expert.surname}
+            </h4>
+            <div>{this.props.expert.img}</div>
+            <p>{this.props.expert.description}</p>
+          </div>
+            <p>{this.props.price}</p>
+            <button>Buy</button>
           </div>
         </div>
       </div>
