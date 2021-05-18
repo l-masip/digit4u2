@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/articles" component={Blog} />
         <AnonRoute exact path="/signup" component={SingUp} />
         <AnonRoute exact path="/login" component={Login} />
-        <PrivateRoute path="/userhomepage" exact component={UserHomepage} />
+        <PrivateRoute path="/profile" exact component={UserHomepage} />
       </Switch>
       <Footer />
     </div>
