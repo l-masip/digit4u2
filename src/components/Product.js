@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactPlayer from 'react-player'
 import ProductService from "../services/product.service";
 
 class Product extends Component {
@@ -31,9 +32,7 @@ class Product extends Component {
           <h2>{this.props.name}</h2>
         </div>
         <div>
-          <video width="320" height="240" controls>
-            <source src={this.props.video_demo} />
-          </video>
+        <ReactPlayer url={this.props.video_demo} />
         </div>
         <div>
           <div>

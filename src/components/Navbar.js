@@ -9,6 +9,11 @@ class Navbar extends Component {
     };
   }
   
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.logout(this.state.fields);
+  }
+
   render() {
     return (
       <nav className="navbar">
@@ -21,7 +26,7 @@ class Navbar extends Component {
         {this.props.isLoggedIn ? (
           <React.Fragment>
           <div className="navbar-links">
-            <a href="/" className="links-nav">
+            <a href="/" className="links-nav" onClick={(e) => this.handleSubmit(e)}>
               Logout
             </a>
             <a href="/userhomepage" className="links-nav">
