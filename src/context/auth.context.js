@@ -8,7 +8,8 @@ class AuthProvider extends React.Component{
   state = {
     isLoggedIn: false,
     isLoading: true,
-    user: null
+    user: null,
+    isAdmin: null
   }
 
   authService = new AuthService();
@@ -19,10 +20,10 @@ class AuthProvider extends React.Component{
       const response = await this.authService.isLoggedIn();
       if(response){
         console.log(response);
-        this.setState({ isLoggedIn: true, isLoading: false, user: response.data });
+        this.setState({ isLoggedIn: true, isLoading: false, user: response.data, isAdmin: response.data.role});
       }
     } catch(err){
-      this.setState({ isLoggedIn: false, isLoading: false, user: null });
+      this.setState({ isLoggedIn: false, isLoading: false, user: null, isAdmin: null });
     }
   }
 
@@ -75,14 +76,14 @@ const withAuth = (WrappedComponent) => {
       <Consumer>
         {
           (value) => {
-            const { isLoading, isLoggedIn, user, signup, login, logout, editUser } = value;
+            const { isLoading, isLoggedIn, user, isAdmin, signup, login, logout, editUser } = value;
 
             return (
               <WrappedComponent
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading}
-                isAdmin={user.role === 'admin'}
                 user={user}
+                isAdmin={isAdmin}
                 signup={signup}
                 login={login}
                 logout={logout}

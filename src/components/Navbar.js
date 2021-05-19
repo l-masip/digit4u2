@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from "../context/auth.context";
+import { withRouter } from 'react-router'
 
 class Navbar extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Navbar extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.logout(this.state.fields);
+    this.props.history.push('/')
   }
 
   render() {
@@ -51,4 +53,4 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
+export default withRouter(withAuth(Navbar));

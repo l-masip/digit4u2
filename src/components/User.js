@@ -1,43 +1,62 @@
-import React, { Component } from 'react';
-import UserService from '../services/user.service';
-import {withAuth} from "../context/auth.context";
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import UserService from "../services/user.service";
+import SampleProduct from "./SampleProduct";
+import { withAuth } from "../context/auth.context";
+import { Link } from "react-router-dom";
 
+class User extends React.Component {
+  userService = new UserService();
 
-function User ({name, surname, position, phone, products, id, refreshState}) {
-  const userService = new UserService();
-
-
-  const deleteUser=()=> {
-    userService.deleteUser(id)
+  deleteUser = () => {
+    this.userService
+      .deleteUser(this.props.id)
       .then(() => {
-        console.log('Deleted');
-        refreshState();
+        console.log("Deleted");
+        this.props.refreshState();
         window.location.reload();
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err));
+  };
+
+  componentDidMount() {
+
   }
 
+  displayProducts = () => {
+    console.log("products in displayproducts", this.props.products)
+    if(this.props.products) {
+      return this.props.products.map((product) => {
+        return (
+          <SampleProduct
+            refreshState={() => this.refreshState()}
+            key={product.id}
+            {...product}
+          />
+        );
+      });
+    }
+  }
 
-    //const {user}= this.props;
-
-    return (
-      <div className="user">
-        <div>
-          <h2>
-            {name} {surname}
-          </h2>
-          <p>Position: {position}</p>
-          <p>Phone: {phone}</p>
+    render(){
+      console.log("products in user.js", this.props.products);
+      return (
+        <div className="user">
+          <div>
+            <h2>
+              {this.props.name} {this.props.surname}
+            </h2>
+            <p>Position: {this.props.position}</p>
+            <p>Phone: {this.props.phone}</p>
+          </div>
+          <div>
+            {this.props.products && this.displayProducts()}
+          </div>
+          <Link to={`/editUser/${this.props.id}`}>Edit</Link>
+          <button onClick={() => this.deleteUser()}>Delete</button>
         </div>
-        <div>
-          <p>Your products: {products}</p>
-          <Link to={`/editUser/${id}`}>Edit</Link>
-          <button onClick={() => deleteUser()}>Delete</button>
-        </div>
-      </div>
-    );
+      );
 
+    }
 }
 
 export default withAuth(User);

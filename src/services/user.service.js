@@ -8,7 +8,7 @@ export default class UserService {
     });
   }
 
-  getUser = (id, data) => this.instance.get(`/${id}`, data);
+  getUser = (id) => this.instance.get(`/${id}`);
   editUser = (id, data) => this.instance.put(`/${id}`, data);
   deleteUser = (id) => this.instance.delete(`/${id}`);
 }

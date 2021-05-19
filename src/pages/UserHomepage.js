@@ -3,22 +3,23 @@ import { withAuth } from '../context/auth.context';
 import User from '../components/User';
 import UserService from '../services/user.service';
 import AuthService from '../services/auth.services';
-import userEvent from '@testing-library/user-event';
 
 class UserHomepage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      user: {},
     };
     this.userService = new UserService();
     this.authService = new AuthService();
   }
+
   refreshState() {
+    console.log("user id", this.props.user.id)
     this.userService
-      .getUser()
+      .getUser(this.props.user.id)
       .then((response) => {
-        console.log(response.data);
+        console.log("res.data", response.data);
         this.setState({ user: response.data });
       })
       .catch((err) => console.error(err));
@@ -29,23 +30,23 @@ class UserHomepage extends Component {
     console.log(this.props);
   }
 
-  displayUser() {
-    const { users } = this.state;
-    return users.map(users => {
-      return (
-        <User
-          refreshState={() => this.refreshState()}
-          key={userEvent.id}
-          {...userEvent}
-        />
-      );
-    });
-  }
+  // displayUser() {
+  //   const { users } = this.state;
+  //   return users.map(user => {
+  //     return (
+  //       <User
+  //         refreshState={() => this.refreshState()}
+  //         key={user.id}
+  //         {...user}
+  //       />
+  //     );
+  //   });
+  // }
 
   render() {
     return (
       <div>
-      {this.displayUser()}
+        <User {...this.state.user}/>
       </div>
     );
   }
