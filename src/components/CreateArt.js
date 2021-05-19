@@ -1,54 +1,53 @@
-import React, { Component } from 'react'
-import ArticleService from '../services/article.service';
-
+import React, { Component } from "react";
+import ArticleService from "../services/article.service";
 
 const validators = {
   name: (value) => {
     let message;
     if (!value) {
-      message = 'Name is required';
+      message = "Name is required";
     }
     return message;
   },
   description: (value) => {
     let message;
     if (!value) {
-      message = 'Description is required';
+      message = "Description is required";
     }
     return message;
   },
   link: (value) => {
     let message;
     if (!value) {
-      message = 'Link is required';
+      message = "Link is required";
     }
     return message;
   },
   link: (value) => {
     let message;
     if (!value) {
-      message = 'Link is required';
+      message = "Link is required";
     }
     return message;
   },
   photo: (value) => {
     let message;
     if (!value) {
-      message = 'Photo is required';
+      message = "Photo is required";
     }
 
     return message;
   },
 };
 export default class CreateArt extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       fields: {
-        name: '',
-        description: '',
-        link: '',
-        photo: '',
+        name: "",
+        description: "",
+        link: "",
+        photo: "",
       },
       errors: {
         name: null,
@@ -61,82 +60,86 @@ export default class CreateArt extends Component {
     this.articleService = new ArticleService();
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.fields)
+    console.log(this.state.fields);
 
     // Usamos el servicio para llamar a la API y crear el Todo en la base de datos
-    this.articleService.create(this.state.fields)
-    .then(() => {
-      console.log('Created');
-      // Llamamos a la función que TodoList nos ha pasado como prop
-      this.setState(
-        {
-          fields: {
-            name: '',
-            description: '',
-            link: '',
-            photo: '',
+    this.articleService
+      .create(this.state.fields)
+      .then(() => {
+        console.log("Created");
+        // Llamamos a la función que TodoList nos ha pasado como prop
+        this.setState(
+          {
+            fields: {
+              name: "",
+              description: "",
+              link: "",
+              photo: "",
+            },
+            errors: {
+              name: null,
+              description: null,
+              link: null,
+              photo: null,
+            },
           },
-          errors: {
-            name: null,
-            description: null,
-            link: null,
-            photo: null,
-          },
-        },
-        () => {
-          this.props.refreshState();
-        }
-      );
-    })
-    .catch(err => console.error(err))
+          () => {
+            this.props.refreshState();
+          }
+        );
+      })
+      .catch((err) => console.error(err));
   }
 
-  handleChange(event){
+  handleChange(event) {
     const { name, value } = event.target;
     this.setState({
       fields: {
         ...this.state.fields,
-        [name]: value
+        [name]: value,
       },
-      errors:{
+      errors: {
         ...this.state.errors,
-        [name]: validators[name](value)
-      }
-    })
+        [name]: validators[name](value),
+      },
+    });
   }
 
   render() {
     const { fields, errors } = this.state;
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
-
         <div className="form-item">
-          <label htmlFor="name">Photo: </label><input
-          type="text"
-          value={fields.name}
-          onChange={(e) => this.handleChange(e)}
-          name="name"
-        /></div>
+          <label htmlFor="name">Photo: </label>
+          <input
+            type="text"
+            value={fields.name}
+            onChange={(e) => this.handleChange(e)}
+            name="name"
+          />
+        </div>
 
         <div className="form-item">
           <label htmlFor="description">Description: </label>
           <input
-          type="text"
-          value={fields.description}
-          onChange={(e) => this.handleChange(e)}
-          name="description"
-        /></div>
+            type="text"
+            value={fields.description}
+            onChange={(e) => this.handleChange(e)}
+            name="description"
+          />
+        </div>
 
         <div className="form-item">
           <label htmlFor="link">Link: </label>
           <input
-          type="text"
-          value={fields.link}
-          onChange={(e) => this.handleChange(e)}
-          name="link"
-        /></div>
+            type="text"
+            value={fields.link}
+            onChange={(e) => this.handleChange(e)}
+            name="link"
+          />
+        </div>
 
         <div className="form-item">
           <label htmlFor="photo">Photo: </label>

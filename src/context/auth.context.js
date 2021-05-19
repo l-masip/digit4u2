@@ -1,101 +1,132 @@
-import React from 'react';
-import AuthService from '../services/auth.services';
-import UserService from '../services/user.service';
+import React from "react";
+import AuthService from "../services/auth.services";
+import UserService from "../services/user.service";
 
 const { Consumer, Provider } = React.createContext();
 
-class AuthProvider extends React.Component{
+class AuthProvider extends React.Component {
   state = {
     isLoggedIn: false,
     isLoading: true,
     user: null,
-    isAdmin: null
-  }
+    isAdmin: null,
+  };
 
   authService = new AuthService();
   userService = new UserService();
 
-  async componentDidMount(){
+  async componentDidMount() {
     try {
       const response = await this.authService.isLoggedIn();
-      if(response){
+      if (response) {
         console.log(response);
-        this.setState({ isLoggedIn: true, isLoading: false, user: response.data, isAdmin: response.data.role});
+        this.setState({
+          isLoggedIn: true,
+          isLoading: false,
+          user: response.data,
+          isAdmin: response.data.role,
+        });
       }
-    } catch(err){
-      this.setState({ isLoggedIn: false, isLoading: false, user: null, isAdmin: null });
+    } catch (err) {
+      this.setState({
+        isLoggedIn: false,
+        isLoading: false,
+        user: null,
+        isAdmin: null,
+      });
     }
   }
 
   signup = async (data) => {
     try {
       const response = await this.authService.signup(data);
-      if(response){
-        this.setState({ isLoggedIn: true, user: response.data })
+      if (response) {
+        this.setState({ isLoggedIn: true, user: response.data });
       }
-    } catch(err){
-      this.setState({ isLoggedIn: false, user: null })
+    } catch (err) {
+      this.setState({ isLoggedIn: false, user: null });
     }
-  }
+  };
 
   login = (data) => {
-    this.authService.login(data)
-    .then(response => this.setState({ isLoggedIn: true, user: response.data }))
-    .catch(() => this.setState({ isLoggedIn: false, user: null }))
-  }
+    this.authService
+      .login(data)
+      .then((response) =>
+        this.setState({ isLoggedIn: true, user: response.data })
+      )
+      .catch(() => this.setState({ isLoggedIn: false, user: null }));
+  };
 
   logout = () => {
-    this.authService.logout()
-    .then(() => this.setState({ isLoggedIn: false, user: null }))
-    .catch(error => console.error(error))
-  }
+    this.authService
+      .logout()
+      .then(() => this.setState({ isLoggedIn: false, user: null }))
+      .catch((error) => console.error(error));
+  };
 
   editUser = (data) => {
-    this.userService.edit(data)
-    .then(response => this.setState({ ...this.state, user: response.data }))
-    .catch(error => console.error(error))
-  }
+    this.userService
+      .edit(data)
+      .then((response) => this.setState({ ...this.state, user: response.data }))
+      .catch((error) => console.error(error));
+  };
 
-  render(){
+  render() {
     const { isLoggedIn, isLoading, user } = this.state;
 
-    if(isLoading) return <p>Loading...</p>;
+    if (isLoading) return <p>Loading...</p>;
 
     return (
-      <Provider value={{ isLoading, isLoggedIn, user, signup: this.signup, login: this.login, logout: this.logout, editUser: this.editUser }}>
+      <Provider
+        value={{
+          isLoading,
+          isLoggedIn,
+          user,
+          signup: this.signup,
+          login: this.login,
+          logout: this.logout,
+          editUser: this.editUser,
+        }}
+      >
         {this.props.children}
       </Provider>
-    )
+    );
   }
 }
 
 const withAuth = (WrappedComponent) => {
-
-  return function(props){
+  return function (props) {
     return (
       <Consumer>
-        {
-          (value) => {
-            const { isLoading, isLoggedIn, user, isAdmin, signup, login, logout, editUser } = value;
+        {(value) => {
+          const {
+            isLoading,
+            isLoggedIn,
+            user,
+            isAdmin,
+            signup,
+            login,
+            logout,
+            editUser,
+          } = value;
 
-            return (
-              <WrappedComponent
-                isLoggedIn={isLoggedIn}
-                isLoading={isLoading}
-                user={user}
-                isAdmin={isAdmin}
-                signup={signup}
-                login={login}
-                logout={logout}
-                editUser={editUser}
-                {...props}
-              />
-            )
-          }
-        }
+          return (
+            <WrappedComponent
+              isLoggedIn={isLoggedIn}
+              isLoading={isLoading}
+              user={user}
+              isAdmin={isAdmin}
+              signup={signup}
+              login={login}
+              logout={logout}
+              editUser={editUser}
+              {...props}
+            />
+          );
+        }}
       </Consumer>
-    )
-  }
-}
+    );
+  };
+};
 
 export { AuthProvider, withAuth };

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router';
-import { withAuth } from '../../context/auth.context';
+import React from "react";
+import { Redirect, Route } from "react-router";
+import { withAuth } from "../../context/auth.context";
 
 function AnonRoute(routeProps) {
   const { isLoggedIn, isLoading } = routeProps;

@@ -12,18 +12,15 @@ class User extends React.Component {
       .deleteUser(this.props.id)
       .then(() => {
         console.log("Deleted");
-        this.props.refreshState();
-        this.props.history.push('/');
+        window.location.replace("/");
       })
       .catch((err) => console.error(err));
   };
 
-
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   displayProducts = () => {
-    if(this.props.products) {
+    if (this.props.products) {
       return this.props.products.map((product) => {
         return (
           <SampleProduct
@@ -34,28 +31,25 @@ class User extends React.Component {
         );
       });
     }
-  }
+  };
 
-    render(){
-      console.log("products in user.js", this.props.products);
-      return (
-        <div className="user">
-          <div>
-            <h2>
-              {this.props.name} {this.props.surname}
-            </h2>
-            <p>Position: {this.props.position}</p>
-            <p>Phone: {this.props.phone}</p>
-          </div>
-          <div>
-            {this.props.products && this.displayProducts()}
-          </div>
-          <Link to={`/editUser/${this.props.id}`}>Edit</Link>
-          <button onClick={() => this.deleteUser()}>Delete</button>
+  render() {
+    console.log("products in user.js", this.props.products);
+    return (
+      <div className="user">
+        <div>
+          <h2>
+            {this.props.name} {this.props.surname}
+          </h2>
+          <p>Position: {this.props.position}</p>
+          <p>Phone: {this.props.phone}</p>
         </div>
-      );
-
-    }
+        <div>{this.props.products && this.displayProducts()}</div>
+        <Link to={`/editUser/${this.props.id}`}>Edit</Link>
+        <button onClick={() => this.deleteUser()}>Delete</button>
+      </div>
+    );
+  }
 }
 
 export default withAuth(User);

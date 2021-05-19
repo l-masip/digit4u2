@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Product from '../components/Product';
-import { withAuth } from '../context/auth.context';
-import ProductService from '../services/product.service';
+import React, { Component } from "react";
+import Product from "../components/Product";
+import { withAuth } from "../context/auth.context";
+import ProductService from "../services/product.service";
 
 class Products extends Component {
   constructor(props) {

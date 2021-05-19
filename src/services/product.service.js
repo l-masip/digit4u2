@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
-export default class ProductService{
-  constructor(){
+export default class ProductService {
+  constructor() {
     this.instance = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/products`,
-      withCredentials: true
-    })
+      withCredentials: true,
+    });
   }
 
-  getProducts = (data) => this.instance.get('/', data);
+  getProducts = (data) => this.instance.get("/", data);
 }

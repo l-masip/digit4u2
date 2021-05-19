@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import ReactPlayer from 'react-player';
-import ProductService from '../services/product.service';
-import { withAuth } from '../context/auth.context';
-import PaymentService from '../services/payment.service';
-import { withRouter } from 'react-router';
+import React, { Component } from "react";
+import ReactPlayer from "react-player";
+import ProductService from "../services/product.service";
+import { withAuth } from "../context/auth.context";
+import PaymentService from "../services/payment.service";
+import { withRouter } from "react-router";
 
 class Product extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class Product extends Component {
       .postReserve(this.props.id)
       .then((user) => {
         console.log(user);
-        this.props.history.push('/userhomepage');
+        this.props.history.push("/userhomepage");
       })
       .catch((err) => console.log(err));
   }
@@ -59,7 +59,7 @@ class Product extends Component {
   // }
 
   render() {
-    console.log('PROPS', this.props);
+    console.log("PROPS", this.props);
     return (
       <>
         <script src="https://js.stripe.com/v3/"></script>

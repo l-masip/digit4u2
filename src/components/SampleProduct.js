@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
 import ProductService from "../services/product.service";
 
 class SmallProduct extends Component {
@@ -15,9 +15,11 @@ class SmallProduct extends Component {
     console.log("PROPS", this.props);
     return (
       <div className="products">
-          <a href='#'><h2>{this.props.name}</h2></a>
-          <ReactPlayer url={this.props.video_demo} />
-        </div>
+        <a href="#">
+          <h2>{this.props.name}</h2>
+        </a>
+        <ReactPlayer url={this.props.video_demo} />
+      </div>
     );
   }
 }

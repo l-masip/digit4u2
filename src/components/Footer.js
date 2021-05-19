@@ -1,13 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-
-class Footer extends Component{
-  constructor(props){
-    super (props);
-    this.state={}
+class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  render(){
+  render() {
     return (
       <div>
         <ul>
@@ -33,7 +32,4 @@ class Footer extends Component{
   }
 }
 
-
-
 export default Footer;
-

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default class ArticleService {
   constructor() {
@@ -8,8 +8,8 @@ export default class ArticleService {
     });
   }
 
-  getArticles = (data) => this.instance.get('/', data);
-  postArticles = (data) => this.instance.post('/', data);
+  getArticles = (data) => this.instance.get("/", data);
+  postArticles = (data) => this.instance.post("/", data);
   getArticle = (id, data) => this.instance.get(`/${id}`, data);
   editArticle = (id, data) => this.instance.put(`/${id}`, data);
   deleteArticle = (id) => this.instance.delete(`/${id}`);

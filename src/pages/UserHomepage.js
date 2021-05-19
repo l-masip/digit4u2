@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { withAuth } from '../context/auth.context';
-import User from '../components/User';
-import UserService from '../services/user.service';
-import AuthService from '../services/auth.services';
+import React, { Component } from "react";
+import { withAuth } from "../context/auth.context";
+import User from "../components/User";
+import UserService from "../services/user.service";
+import AuthService from "../services/auth.services";
 
 class UserHomepage extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class UserHomepage extends Component {
   }
 
   refreshState() {
-    console.log("user id", this.props.user.id)
+    console.log("user id", this.props.user.id);
     this.userService
       .getUser(this.props.user.id)
       .then((response) => {
@@ -30,12 +30,10 @@ class UserHomepage extends Component {
     console.log(this.props);
   }
 
- 
-
   render() {
     return (
       <div>
-        <User {...this.state.user}/>
+        <User {...this.state.user} />
       </div>
     );
   }

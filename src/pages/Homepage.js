@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
-
-
+import React, { Component } from "react";
 
 class Homepage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state= {};
-
+    this.state = {};
   }
 
-  render(){
+  render() {
     return (
       <div>
         <div className="home1">
@@ -19,13 +16,13 @@ class Homepage extends Component {
         <div className="home2">
           <div className="home-products">
             <h2>products</h2>
-            <img src="" alt=""/>
+            <img src="" alt="" />
             <p>description</p>
             <a href="/products">haz click aqui</a>
           </div>
           <div className="home-blog">
             <h2>blog</h2>
-            <img src="" alt=""/>
+            <img src="" alt="" />
             <p>description</p>
             <a href="/articles">haz click aqui</a>
           </div>
@@ -34,6 +31,5 @@ class Homepage extends Component {
     );
   }
 }
-
 
 export default Homepage;
