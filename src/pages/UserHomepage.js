@@ -26,7 +26,7 @@ class UserHomepage extends Component {
 
   componentDidMount() {
     this.refreshState();
-    console.log(this.props);3
+    console.log(this.props);
   }
 
   displayUser() {

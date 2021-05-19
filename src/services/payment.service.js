@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-export default class PayementService{
-  constructor(){
+export default class PayementService {
+  constructor() {
     this.instance = axios.create({
       baseURL: `${process.env.REACT_APP_API_URL}/payments`,
-      withCredentials: true
-    })
+      withCredentials: true,
+    });
   }
 
-  postPayment = (data) => this.instance.post('/', data);
+  postPayment = (id, data) => this.instance.post(`/${id}`, data);
+  postReserve = (id) => this.instance.post(`/${id}`);
 }
