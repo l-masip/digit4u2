@@ -41,6 +41,14 @@ const validators = {
     }
     return message;
   },
+
+    position: (value) => {
+      let message;
+      if (!value) {
+        message = "Position is required";
+      }
+      return message;
+  },
 };
 
 class EditUser extends Component {
@@ -59,6 +67,7 @@ class EditUser extends Component {
         name: null,
         surname: null,
         phone: null,
+        position: null,
       },
     };
   }
@@ -75,14 +84,16 @@ class EditUser extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { name, surname, phone, position } = this.state.fields;
     userService
-      .editUser(this.props.match.params.id, this.state.fields)
+      .editUser(this.props.match.params.id, { name, surname, phone, position })
       .then(() => {
         console.log('Edited');
         this.props.history.push('/userhomepage');
       })
       .catch((err) => console.error(err));
   }
+
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
@@ -101,7 +112,7 @@ class EditUser extends Component {
     const { fields } = this.state;
     return (
       <form onSubmit={(e) => this.handleSubmit(e)}>
-        <div className="form-item">
+        {/* <div className="form-item">
           <label htmlFor="password">Password: </label>
           <input
             type="password"
@@ -109,7 +120,7 @@ class EditUser extends Component {
             value={fields.password}
             onChange={(e) => this.handleChange(e)}
           />
-        </div>
+        </div> */}
 
         <div className="form-item">
           <label htmlFor="name">Name: </label>
