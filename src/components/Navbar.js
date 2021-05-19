@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/auth.context";
 import { withRouter } from "react-router";
+import "./navbar.css";
 
 class Navbar extends Component {
   constructor(props) {
@@ -28,15 +29,15 @@ class Navbar extends Component {
         {this.props.isLoggedIn ? (
           <React.Fragment>
             <div className="navbar-links">
+              <a href="/userhomepage" className="links-nav">
+                Profile
+              </a>
               <a
                 href="/"
                 className="links-nav"
                 onClick={(e) => this.handleSubmit(e)}
               >
                 Logout
-              </a>
-              <a href="/userhomepage" className="links-nav">
-                Profile
               </a>
             </div>
           </React.Fragment>
