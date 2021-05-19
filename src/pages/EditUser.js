@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/auth.context";
-import UserService from '../services/user.service';
+import UserService from "../services/user.service";
 
 const userService = new UserService();
 
@@ -42,12 +42,12 @@ const validators = {
     return message;
   },
 
-    position: (value) => {
-      let message;
-      if (!value) {
-        message = "Position is required";
-      }
-      return message;
+  position: (value) => {
+    let message;
+    if (!value) {
+      message = "Position is required";
+    }
+    return message;
   },
 };
 
@@ -56,11 +56,11 @@ class EditUser extends Component {
     super(props);
     this.state = {
       fields: {
-        password: '',
-        name: '',
-        surname: '',
-        phone: '',
-        position: '',
+        password: "",
+        name: "",
+        surname: "",
+        phone: "",
+        position: "",
       },
       errors: {
         password: null,
@@ -88,8 +88,8 @@ class EditUser extends Component {
     userService
       .editUser(this.props.match.params.id, { name, surname, phone, position })
       .then(() => {
-        console.log('Edited');
-        this.props.history.push('/userhomepage');
+        console.log("Edited");
+        this.props.history.push("/userhomepage");
       })
       .catch((err) => console.error(err));
   }

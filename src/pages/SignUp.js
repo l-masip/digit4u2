@@ -84,7 +84,7 @@ class Signup extends Component {
     event.preventDefault();
     console.log(this.state.fields);
     this.props.signup(this.state.fields);
-    this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   handleChange(event) {
