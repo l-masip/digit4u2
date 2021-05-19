@@ -13,10 +13,11 @@ class User extends React.Component {
       .then(() => {
         console.log("Deleted");
         this.props.refreshState();
-        window.location.reload();
+
       })
       .catch((err) => console.error(err));
   };
+
 
   componentDidMount() {
 
