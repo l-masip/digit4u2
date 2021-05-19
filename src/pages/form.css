@@ -14,7 +14,7 @@
   padding: 12px 20px;
   margin: 5px 0;
   box-sizing: border-box;
-  border: 2px solid;
+  border: 2px solid #00293c;
   border-radius: 10px;
 }
 
@@ -34,4 +34,8 @@
 .info-form {
   display:inline-block;
   padding:15px 10px;
+}
+
+.form-item textarea {
+  height: 400px;
 }
