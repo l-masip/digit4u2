@@ -13,17 +13,15 @@ class User extends React.Component {
       .then(() => {
         console.log("Deleted");
         this.props.refreshState();
-        window.location.reload();
+        this.props.history.push('/');
       })
       .catch((err) => console.error(err));
   };
 
   componentDidMount() {
-
   }
 
   displayProducts = () => {
-    console.log("products in displayproducts", this.props.products)
     if(this.props.products) {
       return this.props.products.map((product) => {
         return (
