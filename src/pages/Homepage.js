@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './homepage.css'
 
 class Homepage extends Component {
   constructor(props) {
@@ -8,8 +9,8 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div>
-        <div className="home1">
+      <div className='homepage'>
+        <div className="intro">
           <h1>Digital Transformation and Digitization of Companies</h1>
           <p>
             Is it difficult for you to visualize the future of your company? You
@@ -19,10 +20,11 @@ class Homepage extends Component {
             We want to be you digital agency
           </p>
         </div>
-        <div className="home2">
-          <div className="home-products">
+        <div className="home-div">
+          <div className="home-object">
             <h2>Products</h2>
             <img
+              className="homepage-img"
               src="https://cdn.kometia-static.com/blog/2020/07/24133307/shutterstock_507077239.jpg"
               alt="product"
             />
@@ -34,9 +36,10 @@ class Homepage extends Component {
             </p>
             <a href="/products">Find out more</a>
           </div>
-          <div className="home-blog">
+          <div className="home-object">
             <h2>blog</h2>
             <img
+              className="homepage-img"
               src="https://www.blogdigital.mx/images/2018/11/12/blog_digital_como_iniciar_un_blog_rentable_large.png"
               alt="blog"
             />

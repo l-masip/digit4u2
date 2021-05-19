@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './footer.css'
 
 class Footer extends Component {
   constructor(props) {
@@ -8,26 +9,26 @@ class Footer extends Component {
 
   render() {
     return (
-      <div>
+      <footer className='footer'>
         <ul>
           <li>
             <a href="#">
-              <img src="fb" alt="fb" />
+              <img src="/images/facebook (1).png" alt="fb" className='footer-icons'/>
             </a>
           </li>
           <li>
             <a href="#">
-              <img src="lk" alt="lk" />
+              <img src="/images/linkedin (3).png" alt="lk" className='footer-icons'/>
             </a>
           </li>
           <li>
             <a href="#">
-              <img src="ig" alt="ig" />
+              <img src="/images/instagram (1).png" alt="ig" className='footer-icons'/>
             </a>
           </li>
         </ul>
-        <a href="/contact-us">Contact Us</a>
-      </div>
+        <a href="/contact-us" className='links-nav'>Contact Us</a>
+      </footer>
     );
   }
 }

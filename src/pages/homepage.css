@@ -1,0 +1,42 @@
+.homepage {
+  width: 100%;
+}
+
+.intro h1 {
+  font-size: 27px;
+  margin: 15px;
+  margin-bottom: 20px;
+}
+
+.intro p,
+.home-object p {
+  margin: 15px;
+  font: 12px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.home-object h2 {
+  font-size: 24px;
+  margin: 15px;
+  margin-bottom: 20px;
+}
+
+.homepage-img {
+  width: 100%;
+}
+
+.home-div a {
+  display: inline-block;
+  padding: 15px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #f62a00;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px #999;
+  position:relative;
+  left:33%;
+  margin-bottom: 20px;
+}

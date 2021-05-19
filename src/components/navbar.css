@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
 *{
     margin: 0;
     padding: 0;
+    color: #00293c;
 }
 
 .navbar {
     background-color: #1E656D;
-    width: 100%;
+    max-width: 375px;
     height: 65px;
     display: flex;
     flex-direction: row;
@@ -15,6 +18,7 @@
 
 .navbar-logo {
     margin: 10px;
+    font-family: 'Paytone One', sans-serif;
 }
 
 .logo {
