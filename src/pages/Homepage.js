@@ -37,7 +37,7 @@ class Homepage extends Component {
             <a href="/products">Find out more</a>
           </div>
           <div className="home-object">
-            <h2>blog</h2>
+            <h2>Blog</h2>
             <img
               className="homepage-img"
               src="https://www.blogdigital.mx/images/2018/11/12/blog_digital_como_iniciar_un_blog_rentable_large.png"
