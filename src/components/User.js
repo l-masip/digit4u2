@@ -1,34 +1,43 @@
 import React, { Component } from 'react';
 import UserService from '../services/user.service';
 import {withAuth} from "../context/auth.context";
+import { Link } from 'react-router-dom';
 
-class User extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {},
-    };
-    this.userService = new UserService();
+
+function User ({name, surname, position, phone, products, id, refreshState}) {
+  const userService = new UserService();
+
+
+  const deleteUser=()=> {
+    userService.deleteUser(id)
+      .then(() => {
+        console.log('Deleted');
+        refreshState();
+        window.location.reload();
+      })
+      .catch(err => console.error(err))
   }
 
-  render() {
-    const {user}= this.props;
+
+    //const {user}= this.props;
 
     return (
       <div className="user">
         <div>
           <h2>
-            {user.name} {user.surname}
+            {name} {surname}
           </h2>
-          <p>{user.position}</p>
-          <p>{user.phone}</p>
+          <p>Position: {position}</p>
+          <p>Phone: {phone}</p>
         </div>
         <div>
-          <p>{user.products}</p>
+          <p>Your products: {products}</p>
+          <Link to={`/editUser/${id}`}>Edit</Link>
+          <button onClick={() => deleteUser()}>Delete</button>
         </div>
       </div>
     );
-  }
+
 }
 
 export default withAuth(User);

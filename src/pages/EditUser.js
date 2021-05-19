@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/auth.context";
+import UserService from '../services/user.service';
+
+const userService = new UserService();
 
 const validators = {
   password: (value) => {
@@ -45,11 +48,11 @@ class EditUser extends Component {
     super(props);
     this.state = {
       fields: {
-        password: "",
-        name: "",
-        surname: "",
-        phone: "",
-        position: "",
+        password: '',
+        name: '',
+        surname: '',
+        phone: '',
+        position: '',
       },
       errors: {
         password: null,
@@ -60,18 +63,26 @@ class EditUser extends Component {
     };
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(this.state.fields);
-    const uploadData = new FormData();
-    //uploadData.append('nombre de la clave', 'valor');
-    Object.keys(this.state.fields).forEach((key) => {
-      uploadData.append(key, this.state.fields[key]);
-    });
-
-    this.props.edit(uploadData);
+  componentDidMount() {
+    console.log(this.props.match.params.id);
+    userService
+      .getUser(this.props.match.params.id)
+      .then((response) => {
+        this.setState({ fields: response.data });
+      })
+      .catch((err) => console.error(err));
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    userService
+      .editUser(this.props.match.params.id, this.state.fields)
+      .then(() => {
+        console.log('Edited');
+        this.props.history.push('/userhomepage');
+      })
+      .catch((err) => console.error(err));
+  }
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
