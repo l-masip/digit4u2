@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import ProductService from '../services/product.service';
 import { withAuth } from '../context/auth.context';
 import PaymentService from '../services/payment.service';
+import { withRouter } from 'react-router';
 
 class Product extends Component {
   constructor(props) {
@@ -15,14 +16,15 @@ class Product extends Component {
   }
 
   reserveOne() {
-    console.log(this.props.id)
-    this.paymentService.postReserve(this.props.id)
-    .then((user)=>{
-      console.log(user)
-    })
-    .catch((err) => console.log(err))
+    console.log(this.props.id);
+    this.paymentService
+      .postReserve(this.props.id)
+      .then((user) => {
+        console.log(user);
+        this.props.history.push('/userhomepage');
+      })
+      .catch((err) => console.log(err));
   }
-
 
   // componentDidMount() {
   //   stripeHandler = () => {
@@ -57,7 +59,6 @@ class Product extends Component {
   // }
 
   render() {
-
     console.log('PROPS', this.props);
     return (
       <>
@@ -81,7 +82,11 @@ class Product extends Component {
                 <p>{this.props.expert.description}</p>
               </div>
               <p>{this.props.price}</p>
-              <button onClick={() => this.stripeHandler()}>Buy</button>
+              {this.props.isLoggedIn ? (
+                <React.Fragment>
+                  <button onClick={() => this.reserveOne()}>Buy</button>
+                </React.Fragment>
+              ) : null}
             </div>
           </div>
         </div>
@@ -90,4 +95,4 @@ class Product extends Component {
   }
 }
 
-export default withAuth(Product);
+export default withRouter(withAuth(Product));

@@ -9,5 +9,5 @@ export default class PayementService {
   }
 
   postPayment = (id, data) => this.instance.post(`/${id}`, data);
-  postReserve = (id) => this.instance.post(`/${id}`);
+  postReserve = (id) => this.instance.post(`/reserve/${id}`);
 }

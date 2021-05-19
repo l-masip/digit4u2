@@ -30,18 +30,7 @@ class UserHomepage extends Component {
     console.log(this.props);
   }
 
-  // displayUser() {
-  //   const { users } = this.state;
-  //   return users.map(user => {
-  //     return (
-  //       <User
-  //         refreshState={() => this.refreshState()}
-  //         key={user.id}
-  //         {...user}
-  //       />
-  //     );
-  //   });
-  // }
+ 
 
   render() {
     return (
