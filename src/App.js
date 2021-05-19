@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UserHomepage from './pages/UserHomepage';
 import EditArticle from "./pages/EditArticle";
 import EditUser from "./pages/EditUser";
+import ContactUs from './pages/ContactUs';
 import { withAuth } from "./context/auth.context";
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/editArticle/:id" component={EditArticle} />
         <Route exact path="/editUser/:id" component={EditUser} />
+        <Route exact path='/contact-us' component={ContactUs} />
         <PrivateRoute path="/userhomepage" exact component={UserHomepage} />
       </Switch>
       <Footer />

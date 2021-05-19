@@ -12,8 +12,7 @@ class User extends React.Component {
       .deleteUser(this.props.id)
       .then(() => {
         console.log("Deleted");
-        this.props.refreshState();
-        this.props.history.push('/');
+        window.location.replace('/');
       })
       .catch((err) => console.error(err));
   };
