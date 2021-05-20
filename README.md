@@ -154,8 +154,8 @@ or picture of your physical board
 
 ### Git
 
-[Frontend Link](https://github.com/l-masip/digit4u)
-[Backend Link](https://github.com/l-masip/digit4u2)
+- [Frontend Link](https://github.com/l-masip/digit4u)
+- [Backend Link](https://github.com/l-masip/digit4u2)
 
 ### Deploy link
 [Deploy on Heroku](https://digit4u.herokuapp.com)
