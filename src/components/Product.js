@@ -4,6 +4,7 @@ import ProductService from "../services/product.service";
 import { withAuth } from "../context/auth.context";
 import PaymentService from "../services/payment.service";
 import { withRouter } from "react-router";
+import "./products.css";
 
 class Product extends Component {
   constructor(props) {
@@ -62,31 +63,35 @@ class Product extends Component {
     console.log("PROPS", this.props);
     return (
       <>
-        
         <div className="products">
+          
+          <h2>{this.props.name}</h2>
           <div>
-            <h2>{this.props.name}</h2>
+            <ReactPlayer className="vid-demo" url={this.props.video_demo} />
           </div>
-          <div>
-            <ReactPlayer url={this.props.video_demo} />
-          </div>
-          <div>
-            <div>
-              <p>{this.props.category}</p>
+          <div className="product-body">
+            <div className="decrip">
               <p>{this.props.description}</p>
-              <div>
-                <h4>
+              <div className="expert">
+                <h4>Presented by:</h4>
+                <img className="pic" src={this.props.expert.img} />
+                <p className="expert-name">
                   {this.props.expert.name} {this.props.expert.surname}
-                </h4>
-                <div>{this.props.expert.img}</div>
+                </p>
                 <p>{this.props.expert.description}</p>
               </div>
-              <p>{this.props.price}</p>
-              {this.props.isLoggedIn ? (
-                <React.Fragment>
-                  <button onClick={() => this.reserveOne()}>Buy</button>
-                </React.Fragment>
-              ) : null}
+              <div className="reserve-btn">
+                {this.props.isLoggedIn ? (
+                  <React.Fragment>
+                    <button
+                      className="form-btn"
+                      onClick={() => this.reserveOne()}
+                    >
+                      Pick
+                    </button>
+                  </React.Fragment>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

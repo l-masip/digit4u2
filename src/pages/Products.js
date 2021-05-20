@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Product from '../components/Product';
 import { withAuth } from '../context/auth.context';
 import ProductService from '../services/product.service';
+import '../components/products.css';
 
 class Products extends Component {
   constructor(props) {
@@ -44,7 +45,12 @@ class Products extends Component {
   }
 
   render() {
-    return <div>{this.displayProducts()}</div>;
+    return (
+      <div>
+        <h1 className="productsh1">Find your Products</h1>
+        {this.displayProducts()}
+      </div>
+    );
   }
 }
 

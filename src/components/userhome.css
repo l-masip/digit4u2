@@ -44,9 +44,10 @@ margin-bottom: 30px;
 margin-bottom: 10px;
 }
 .edit-link{
-  font-size: 20px;
-  margin: 30px;
-  margin-bottom: 2px;
-  margin-left: 10px;
-  padding-left: 35px;
+  text-decoration: none;
+  color: white;
+}
+.user-btn{
+display: flex;
+justify-content: center;
 }

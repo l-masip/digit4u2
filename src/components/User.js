@@ -49,12 +49,16 @@ class User extends React.Component {
           <p>Your selected products</p>
           {this.props.products && this.displayProducts()}
         </div>
-        <Link className="edit-link" to={`/editUser/${this.props.id}`}>
-          Edit your profile
-        </Link>
-        <button className="form-btn" onClick={() => this.deleteUser()}>
-          Delete profile
-        </button>
+        <div className="user-btn">
+          <button className="form-btn">
+            <Link className="edit-link" to={`/editUser/${this.props.id}`}>
+              Edit Profile
+            </Link>
+          </button>
+          <button className="form-btn" onClick={() => this.deleteUser()}>
+            Delete Profile
+          </button>
+        </div>
       </div>
     );
   }
