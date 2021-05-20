@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Product from "../components/Product";
-import { withAuth } from "../context/auth.context";
-import ProductService from "../services/product.service";
+import React, { Component } from 'react';
+import Product from '../components/Product';
+import { withAuth } from '../context/auth.context';
+import ProductService from '../services/product.service';
 
 class Products extends Component {
   constructor(props) {
@@ -28,15 +28,19 @@ class Products extends Component {
 
   displayProducts() {
     const { products } = this.state;
-    return products.map((product) => {
-      return (
-        <Product
-          refreshState={() => this.refreshState()}
-          key={product.id}
-          {...product}
-        />
-      );
-    });
+
+    if (products) {
+      console.log(products);
+      return products.map((product) => {
+        return (
+          <Product
+            refreshState={() => this.refreshState()}
+            key={product.id}
+            {...product}
+          />
+        );
+      });
+    }
   }
 
   render() {

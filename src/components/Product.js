@@ -62,7 +62,7 @@ class Product extends Component {
     console.log("PROPS", this.props);
     return (
       <>
-        <script src="https://js.stripe.com/v3/"></script>
+        
         <div className="products">
           <div>
             <h2>{this.props.name}</h2>
