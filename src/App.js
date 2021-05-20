@@ -14,10 +14,11 @@ import EditArticle from "./pages/EditArticle";
 import EditUser from "./pages/EditUser";
 import ContactUs from "./pages/ContactUs";
 import { withAuth } from "./context/auth.context";
+// import './App.css'
 
 function App() {
   return (
-    <div>
+    <div className='wrapper'>
       <Navbar />
       <Switch>
         <Route exact path="/" component={Homepage} />

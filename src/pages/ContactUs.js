@@ -48,20 +48,30 @@ class ContactUs extends Component {
 
   render() {
     return (
-      <form className='form'>
-        <div className='form-item'>
+      <form className="form">
+        <div className="form-item">
           <label htmlFor="name" />
-          <input type="text" name="name" placeholder='name'/>
+          <input type="text" name="name" placeholder="name" />
         </div>
-        <div className='form-item'>
+        <div className="form-item">
           <label htmlFor="email" />
-          <input type="text" name="email" placeholder='Contact email'/>
+          <input type="text" name="email" placeholder="Contact email" />
         </div>
-        <div className='form-item'>
+        <div className="form-item">
           <label htmlFor="info" />
-          <textarea type="text" name="info" placeholder='Your message...' className='info-form' rows="10" cols="20" wrap="soft"/>
+          <textarea
+            type="text"
+            name="info"
+            placeholder="Your message..."
+            className="info-form"
+            rows="10"
+            cols="20"
+            wrap="soft"
+          />
         </div>
-        <button type="submit" className='form-btn'>Send</button>
+        <button type="submit" className="form-btn">
+          Send
+        </button>
       </form>
     );
   }

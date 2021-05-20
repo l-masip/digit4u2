@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../context/auth.context";
 import UserService from "../services/user.service";
+import './form.css'
 
 const userService = new UserService();
 
@@ -111,7 +112,7 @@ class EditUser extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
+      <form onSubmit={(e) => this.handleSubmit(e)} className='form'>
         {/* <div className="form-item">
           <label htmlFor="password">Password: </label>
           <input
@@ -162,7 +163,7 @@ class EditUser extends Component {
           />
         </div>
 
-        <button type="submit">Submit changes</button>
+        <button type="submit" className='form-btn'>Submit changes</button>
       </form>
     );
   }

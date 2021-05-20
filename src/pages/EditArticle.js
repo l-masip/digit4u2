@@ -92,9 +92,9 @@ class EditArticle extends Component {
   render() {
     const { fields } = this.state;
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
+      <form onSubmit={(e) => this.handleSubmit(e)} className='form'>
         <div className="form-item">
-          <label htmlFor="name">Photo: </label>
+          <label htmlFor="name">Title: <br></br></label>
           <input
             type="text"
             value={fields.name}
@@ -104,8 +104,8 @@ class EditArticle extends Component {
         </div>
 
         <div className="form-item">
-          <label htmlFor="description">Description: </label>
-          <input
+          <label htmlFor="description">Description: <br></br> </label>
+          <textarea
             type="text"
             value={fields.description}
             onChange={(e) => this.handleChange(e)}
@@ -114,17 +114,20 @@ class EditArticle extends Component {
         </div>
 
         <div className="form-item">
-          <label htmlFor="link">Link: </label>
+          <label htmlFor="link">Link: <br></br></label>
           <input
             type="text"
             value={fields.link}
             onChange={(e) => this.handleChange(e)}
             name="link"
+            rows="10"
+            cols="20"
+            wrap="soft"
           />
         </div>
 
         <div className="form-item">
-          <label htmlFor="photo">Photo: </label>
+          <label htmlFor="photo">Photo: <br></br></label>
           <input
             type="file"
             name="photo"
@@ -132,7 +135,7 @@ class EditArticle extends Component {
           />
         </div>
 
-        <button type="submit">Edit Article</button>
+        <button type="submit" className="form-btn">Edit Article</button>
       </form>
     );
   }
