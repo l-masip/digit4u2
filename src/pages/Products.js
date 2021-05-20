@@ -46,7 +46,7 @@ class Products extends Component {
 
   render() {
     return (
-      <div>
+      <div className='products-page'>
         <h1 className="productsh1">Find your Products</h1>
         {this.displayProducts()}
       </div>

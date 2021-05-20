@@ -20,7 +20,7 @@ function App() {
   return (
     <div className='wrapper'>
       <Navbar />
-      <Switch>
+      <Switch className='page-margins'>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/articles" component={Blog} />

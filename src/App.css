@@ -35,7 +35,7 @@
   to {
     transform: rotate(360deg);
   }
-} */
+}
 
 html, body {
   margin: 0;
@@ -45,7 +45,7 @@ html, body {
 .wrapper {
   box-sizing: border-box;
   position: relative;
-  padding-bottom: 65px; /* Height of footer */
+  padding-bottom: 65px;
   min-height: 100%;
 }
 
@@ -53,4 +53,9 @@ html, body {
   position: absolute;
   bottom: 0;
   width: 100%;
+} */
+
+
+.page-margins {
+  margin-right: 10px;
 }
