@@ -1,53 +1,61 @@
-.intro-userhome h1{
+.intro-userhome h1 {
   font-size: 27px;
   margin: 15px;
   margin-bottom: 2px;
 }
-.user-title h2{
+
+.user-title h2 {
   font-size: 27px;
   margin: 15px;
   margin-bottom: 2px;
 }
-.user-title p{
+
+.user-title p {
   font-size: 20px;
   margin: 15px;
   margin-bottom: 2px;
 }
+
 .user {
-  max-width: 370px;
-
+  max-width: 360px;
 }
 
-.product-vid{
+.product-vid {
   max-width: 340px;
-
+  max-height: 200px;
+  margin-left: -5px;
 }
-.user-products{
+
+.user-products {
   max-width: 350px;
   margin: 10px;
 }
-.user-products p{
+
+.user-products p {
   max-width: 350px;
   font-size: 20px;
   margin: 15px;
   margin-top: 30px;
   text-align: center;
-  font-weight: 600  ;
-  color:#f62a00;
+  font-weight: 600;
+  color: #f62a00;
 }
 
-.products{
-margin: 10px;
-margin-bottom: 30px;
+.products {
+  margin: 10px;
+  margin-bottom: 30px;
 }
-.products h2{
-margin-bottom: 10px;
+
+.products h2 {
+  margin-bottom: 10px;
 }
-.edit-link{
+
+.edit-link {
   text-decoration: none;
   color: white;
 }
-.user-btn{
-display: flex;
-justify-content: center;
+
+.user-btn {
+  display: flex;
+  justify-content: center;
 }
