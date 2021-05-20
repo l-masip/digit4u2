@@ -149,8 +149,7 @@ Implement nodemailer
 
 ### Trello/Kanban
 
-[Trello](https://trello.com/b/LA1OwpCf/ironhack-project-3)
-or picture of your physical board
+- [Trello](https://trello.com/b/LA1OwpCf/ironhack-project-3)
 
 ### Git
 
@@ -158,4 +157,5 @@ or picture of your physical board
 - [Backend Link](https://github.com/l-masip/digit4u2)
 
 ### Deploy link
-[Deploy on Heroku](https://digit4u.herokuapp.com)
+
+- [Deploy on Heroku](https://digit4u.herokuapp.com)
