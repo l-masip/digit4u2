@@ -18,7 +18,7 @@ import { withAuth } from "./context/auth.context";
 
 function App() {
   return (
-    <div className='wrapper'>
+    <div>
       <Navbar />
       <Switch className='page-margins'>
         <Route exact path="/" component={Homepage} />
