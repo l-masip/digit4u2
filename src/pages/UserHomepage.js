@@ -32,8 +32,10 @@ class UserHomepage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="intro-userhome">
+        <h1>Welcome</h1>
         <User {...this.state.user} />
+
       </div>
     );
   }
